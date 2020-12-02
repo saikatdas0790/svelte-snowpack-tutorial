@@ -1,4 +1,12 @@
 <script>
+  import { onMount } from "svelte";
+  let count = 0;
+  onMount(() => {
+    const interval = setInterval(() => count++, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  });
 </script>
 
 <style>
@@ -33,6 +41,7 @@
 <div class="App">
   <header class="App-header">
     <img src="/logo.svg" alt="logo" class="App-logo" />
+    <p>Page has been open for <code>{count}</code> seconds.</p>
     <a
       href="https://svelte.dev"
       class="App-link"
